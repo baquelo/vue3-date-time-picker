@@ -1,4 +1,4 @@
-import { App } from 'vue';
+import type { App } from 'vue';
 import { AppDateTimePicker } from '@/components/app-date-time-picker';
 import { AppTimePicker } from '@/components/app-time-picker';
 import ClientOnly from '@/components/ClientOnly.vue';

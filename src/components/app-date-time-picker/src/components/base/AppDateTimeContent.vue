@@ -8,7 +8,7 @@
       @select="handleSelectValue"
     />
     <div ref="picker" class="app-date-time-picker-content__picker">
-      <component :is="currentComponent" v-model="model" />
+      <component :is="currentComponent" v-model="validModel" />
     </div>
 
     <AppButtonPanel
@@ -94,6 +94,18 @@ const currentComponent = computed(() => {
     case AppDateTimePickerType.DateTime:
     default:
       return AppDateMode;
+  }
+});
+
+const validModel = computed({
+  get: () => {
+    if (Array.isArray(model.value)) {
+      return model.value.filter((v): v is Date => v instanceof Date);
+    }
+    return model.value instanceof Date ? [model.value] : [];
+  },
+  set: (val: Date[] | Date | null) => {
+    model.value = val ?? [];
   }
 });
 
