@@ -9,7 +9,7 @@
         v-show="isVisible"
         ref="content"
         class="app-popover__content"
-        :style="{ zIndex: '1000' }"
+        :style="{ zIndex: '10000' }"
       >
         <slot name="content"></slot>
       </div>
